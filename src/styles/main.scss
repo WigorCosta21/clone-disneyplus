@@ -5,6 +5,7 @@
 @use "available-devices";
 @use "faq";
 @use "footer";
+@use "header";
 
 @font-face {
   font-family: Avenir;
@@ -23,6 +24,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Avenir, sans-serif;
+  list-style: none;
 }
 
 body {
@@ -71,17 +73,45 @@ body {
 }
 
 .button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 60px;
   font-size: 18px;
   color: variables.$secondaryTextColor;
-  background-color: #6421ff;
+  background-color: variables.$primaryButtonBackgroundColor;
   text-transform: uppercase;
+  cursor: pointer;
   border-radius: 4px;
-  margin-top: 2vh;
-  margin-bottom: 8px;
   border: none;
+  text-decoration: none;
+  padding: 8px 14px;
+  letter-spacing: 1px;
+  border: 1px solid variables.$primaryButtonBackgroundColor;
+
+  &:hover {
+    background-color: lighten(variables.$primaryButtonBackgroundColor, 3%);
+  }
+
+  &--secondary {
+    background-color: variables.$secondaryButtonBackgroundColor;
+    border-color: variables.$secondaryButtonBackgroundColor;
+
+    &:hover {
+      background-color: lighten(variables.$secondaryButtonBackgroundColor, 3%);
+    }
+  }
+
+  &--dark {
+    background-color: rgba(variables.$darkButtonBackgroundColor, 0.8);
+    border-color: variables.$secondaryTextColor;
+
+    &:hover {
+      background-color: variables.$secondaryTextColor;
+      color: variables.$BackgroundColor;
+    }
+  }
 }
 
 .image-text-section {

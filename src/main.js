@@ -2,6 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const buttons = document.querySelectorAll('[data-tab-button]')
   const questions = document.querySelectorAll('[data-faq-question]')
 
+  const heroSection = document.querySelector('.hero')
+  const heroHeight = heroSection.clientHeight
+
+  window.addEventListener('scroll', () => {
+    const currentPosition = window.scrollY
+
+    currentPosition < heroHeight ? hideHeaderElements() : displayHeaderElements()
+  })
+
+  // Attractions section, tab schedule
   buttons.forEach((button) => {
     button.addEventListener('click', (btn) => {
       const targetTab = btn.target.dataset.tabButton
@@ -13,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
+  // FAQ section, accordion
   questions.forEach((question) => {
     question.addEventListener('click', openOrCloseAnswer)
   })
@@ -42,3 +53,12 @@ const openOrCloseAnswer = (element) => {
   parentElement.classList.toggle(elementClass)
 }
 
+const hideHeaderElements = () => {
+  const header = document.querySelector('header')
+  header.classList.add('header--is-hidden')
+}
+
+const displayHeaderElements = () => {
+  const header = document.querySelector('header')
+  header.classList.remove('header--is-hidden')
+}
